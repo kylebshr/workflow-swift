@@ -30,6 +30,10 @@ let package = Package(
             name: "WorkflowCombine",
             targets: ["WorkflowCombine"]
         ),
+        .library(
+            name: "WorkflowConcurrency",
+            targets: ["WorkflowConcurrency"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", from: "6.3.0"),
@@ -70,6 +74,16 @@ let package = Package(
             name: "WorkflowCombine",
             dependencies: ["Workflow"],
             path: "WorkflowCombine/Sources"
+        ),
+        .target(
+            name: "WorkflowConcurrency",
+            dependencies: ["Workflow"],
+            path: "WorkflowConcurrency/Sources"
+        ),
+        .testTarget(
+            name: "WorkflowConcurrencyTests",
+            dependencies: ["WorkflowConcurrency", "Workflow"],
+            path: "WorkflowConcurrency/Tests"
         ),
     ],
     swiftLanguageVersions: [.v5]
